@@ -1,7 +1,16 @@
 node_modules
 dist
+dist2
+dist3
 out
 shots
 .DS_Store
 .eslintcache
 *.log*
+*.tsbuildinfo
+.claude
+.claude-codex-log.md
+.codex-session-changes
+.env
+.env.*
+!.env.example

@@ -4,6 +4,7 @@
   "description": "Configurable local workflow cockpit built with Electron, React, and TypeScript",
   "main": "./out/main/index.js",
   "author": "",
+  "license": "MIT",
   "homepage": "",
   "scripts": {
     "format": "prettier --write .",
