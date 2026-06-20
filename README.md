@@ -8,8 +8,15 @@ It gives one desktop window for:
 - a read-only markdown vault browser
 - a video-curator surface for notes produced by your own pipeline
 
+![Agentic OS 2.0 — the project launcher, with per-project run-mode and engine controls](docs/projects-launcher.webp)
+
 This public version is sanitized and configurable. It does not include private notes, project
 names, logs, local paths, credentials, build output, or personal workflow history.
+
+## Tech stack
+
+- Electron, React, TypeScript
+- Node.js 22+, pnpm
 
 ## Prerequisites
 
@@ -17,6 +24,21 @@ names, logs, local paths, credentials, build output, or personal workflow histor
 - pnpm
 - Windows Terminal (`wt.exe`) for visible session/project launches on Windows
 - Optional local CLIs: `claude`, `codex`, and a FreeLLMAPI-compatible helper if you enable those actions
+
+## Install
+
+```bash
+pnpm install
+```
+
+## Development
+
+```bash
+pnpm dev
+```
+
+The Electron app launches a local desktop window. Visible terminal actions are intended for
+a trusted local machine; do not expose the app over a network or tunnel.
 
 ## Configure
 
@@ -52,24 +74,13 @@ your own local projects and ports.
 The app reads process environment variables. It does not auto-load `.env`; `.env.example`
 is provided as a checklist for launch scripts, shells, or your own dotenv wrapper.
 
-## Install
-
-```bash
-pnpm install
-```
-
-## Development
-
-```bash
-pnpm dev
-```
-
-The Electron app launches a local desktop window. Visible terminal actions are intended for
-a trusted local machine; do not expose the app over a network or tunnel.
-
 ## Verify
 
 ```bash
 pnpm typecheck
 pnpm build
 ```
+
+## License
+
+MIT — see [LICENSE](LICENSE).
