@@ -1,0 +1,56 @@
+appId: app.agenticos.local
+productName: Agentic OS 2.0
+directories:
+  buildResources: build
+files:
+  - '!**/.vscode/*'
+  - '!src/*'
+  - '!electron.vite.config.{js,ts,mjs,cjs}'
+  - '!{.eslintcache,eslint.config.mjs,.prettierignore,.prettierrc.yaml,dev-app-update.yml,CHANGELOG.md,README.md}'
+  - '!{.env,.env.*,.npmrc,pnpm-lock.yaml}'
+  - '!{tsconfig.json,tsconfig.node.json,tsconfig.web.json}'
+  # Exclude everything not needed at runtime and anything that can mutate mid-build.
+  # Logs and tsbuildinfo are written during development; dist*/docs/test/scripts/shots
+  # are dev-only; @fontsource fonts are already bundled into out/renderer by Vite.
+  - '!dist/**'
+  - '!dist2/**'
+  - '!dist3/**'
+  - '!docs/**'
+  - '!test/**'
+  - '!scripts/**'
+  - '!shots/**'
+  - '!**/*.log'
+  - '!**/*.tsbuildinfo'
+  - '!node_modules/@fontsource/**'
+asarUnpack:
+  - resources/**
+win:
+  executableName: agentic-os-2
+nsis:
+  artifactName: ${name}-${version}-setup.${ext}
+  shortcutName: ${productName}
+  uninstallDisplayName: ${productName}
+  createDesktopShortcut: always
+mac:
+  entitlementsInherit: build/entitlements.mac.plist
+  extendInfo:
+    - NSCameraUsageDescription: Application requests access to the device's camera.
+    - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
+    - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
+    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
+  notarize: false
+dmg:
+  artifactName: ${name}-${version}.${ext}
+linux:
+  target:
+    - AppImage
+    - snap
+    - deb
+  maintainer: agentic-os-2
+  category: Utility
+appImage:
+  artifactName: ${name}-${version}.${ext}
+npmRebuild: false
+publish:
+  provider: generic
+  url: https://example.com/auto-updates
